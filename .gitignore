@@ -1,0 +1,11 @@
+# ignorer les runs
+mlruns/
+
+# ignorer le venv
+env_p7
+
+# ignorer les data_source
+DATA/
+
+
+
