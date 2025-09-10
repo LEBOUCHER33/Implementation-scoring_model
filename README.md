@@ -2,7 +2,7 @@
 
 L'objectif du projet sera de sélectionner et d'implémenter un modèle de classification automatique binaire supervisée adapté aux données bancaires, scorant une probabilité de solvabilité des clients afin de leur accorder ou non un crédit à la consommation.
 
-Plusieurs classifieurs seront évalués et comparés sur leurs perfromances suivant le scoring métier.
+Plusieurs classifieurs seront évalués et comparés sur leurs perfomances suivant le scoring métier.
 
 L'inférence du modèle entrainé le plus performant se fera via une API sur une solution cloud.
 
