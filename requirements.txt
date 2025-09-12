@@ -1,0 +1,28 @@
+
+
+# data
+
+pandas
+numpy
+
+# ML
+
+lightgbm
+xgboost
+scikit_learn
+Imbalanced_learn
+shap
+pickle
+
+# visualisation
+
+matplotlib
+seaborn
+
+# MLops
+
+mlflow
+pyngrok
+
+
+

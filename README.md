@@ -19,14 +19,4 @@ Workflow :
 - déployer le modèle sur le cloud via l'API développée
 - gérer le versioning du code de l'API pour assurer son deploiement continue
 
-Requirements :
 
-- mlflow
-- scikit-learn
-- pandas
-- numpy
-- matplotlib
-- lightgbm
-- xgboost
-- Imbalanced-learn
-- pyngrok
