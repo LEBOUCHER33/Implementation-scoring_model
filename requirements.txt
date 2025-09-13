@@ -1,26 +1,26 @@
 
-
-# data
-
+# outils de feature_engineering / analyse des data
 pandas
 numpy
 
-# ML
-
-lightgbm
-xgboost
-scikit_learn
-Imbalanced_learn
-shap
-pickle
-
-# visualisation
-
+# outils de visualisation
 matplotlib
 seaborn
 
-# MLops
+# outils de ML
+lightgbm
+xgboost
+scikit_learn
+shap
+pickle
 
+# outil de gestion des déséquilibre de classe
+imbalanced_learn
+
+# outil de gestion du data drift
+evidently
+
+# outils MLops
 mlflow
 pyngrok
 

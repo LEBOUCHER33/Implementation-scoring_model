@@ -1,22 +1,49 @@
 # Implementation-scoring_model
 
-L'objectif du projet sera de sélectionner et d'implémenter un modèle de classification automatique binaire supervisée adapté aux données bancaires, scorant une probabilité de solvabilité des clients afin de leur accorder ou non un crédit à la consommation.
 
-Plusieurs classifieurs seront évalués et comparés sur leurs perfomances suivant le scoring métier.
+## Objectif :
 
-L'inférence du modèle entrainé le plus performant se fera via une API sur une solution cloud.
+L'objectif du projet sera double :
 
-Il s'agira également d'assurer l'automatisation et l'intégration continue de cette interface API.
+1- Sélectionner et implémenter un modèle de classification automatique binaire supervisé, adapté aux données bancaires, scorant une probabilité de solvabilité des clients afin de leur accorder ou non un crédit à la consommation 
 
-Workflow :
+2- Développer une API sur le cloud pour accéder à l'inférence du modèle 
+
+3- Assurer l'intégration et le déploiement continus de l'API
+
+
+## Workflow :
+
+1- ML_training : évaluation et comparaison des performances de différents modèles de classification suivant un scoring métier.
+
+2- Implémentation d'une API sur une solution cloud pour l'inférence du modèle entrainé.
+
+3- Automatisation et intégration continue de cette interface API.
+
+
+## Partie 1 :
 
 - réaliser le data exploring et le feature engineering des données clients
-- définir un scoring métier, tester et entrainer différents algorithmes de classification automatique supervisée en tenant compte du biais de représentativité des classes
+- définir un scoring métier
+- tester et entrainer différents algorithmes de classification automatique supervisée en tenant compte du biais de représentativité des classes
 - utiliser l'outil de tracking de MLFlow pour logger les métriques de performances et les combinaisons d'hyperparamètres 
-- sélectionner le modèle le plus pertinent et le plus performant, analyser la feature importance et la qualité des prédictions sur le dataset de test
-- enregistrer le modèle via MLFlow registry
+- sélectionner le modèle le plus pertinent et le plus performant, analyser la feature importance et la qualité des prédictions 
+- enregistrer le modèle 
+
+
+## Partie 2 :
+
 - développer une API permettant de réaliser des tests unitaires et l'inférence du modèle
-- déployer le modèle sur le cloud via l'API développée
-- gérer le versioning du code de l'API pour assurer son deploiement continue
+- déployer l'API sur une solution cloud 
+- gérer le versioning du code de l'API pour assurer son deploiement continu
 
 
+
+## Highlights :
+
+
+- Cycle de vie d'un projet de ML 
+
+- API
+
+- outils MLOps
