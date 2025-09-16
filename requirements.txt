@@ -23,6 +23,10 @@ evidently
 # outils MLops
 mlflow
 pyngrok
+streamlit
 
+# outil de gestion de l'API
+fastapi
+uvicorn
 
 

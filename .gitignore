@@ -3,7 +3,6 @@ mlruns/
 
 # ignorer les venv
 env_p7_bis
-venv_evidently
 
 # ignorer les data_source
 DATA/

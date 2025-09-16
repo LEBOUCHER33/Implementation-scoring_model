@@ -3,7 +3,7 @@
 
 ## Objectif :
 
-L'objectif du projet sera double :
+L'objectif du projet sera triple :
 
 1- Sélectionner et implémenter un modèle de classification automatique binaire supervisé, adapté aux données bancaires, scorant une probabilité de solvabilité des clients afin de leur accorder ou non un crédit à la consommation 
 
