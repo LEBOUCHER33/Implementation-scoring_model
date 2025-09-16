@@ -41,8 +41,19 @@ L'objectif du projet sera double :
 
 ## Highlights :
 
+- Data exploring / data engineering : 
+    - nettoyage 
+    - analyse des distributions 
+    - encoding 
+    - analyse des corrélations
+    - imputation 
+    - création de nouvelles variables
 
-- Cycle de vie d'un projet de ML 
+- ML et Classifieurs binaires : modèles, métriques, performances
+
+- Cycle de vie d'un projet de ML (mlflow)
+
+- Datadrift (evidently)
 
 - API
 
