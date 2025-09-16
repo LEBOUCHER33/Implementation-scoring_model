@@ -2,6 +2,7 @@
 # outils de feature_engineering / analyse des data
 pandas
 numpy
+scikit_learn
 
 # outils de visualisation
 matplotlib
@@ -10,11 +11,10 @@ seaborn
 # outils de ML
 lightgbm
 xgboost
-scikit_learn
 shap
 pickle
 
-# outil de gestion des déséquilibre de classe
+# outil de gestion des déséquilibres de classe
 imbalanced_learn
 
 # outil de gestion du data drift
