@@ -13,9 +13,10 @@ Worflow :
 
 # 1- import des bibliothèques nécessaires
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 import pickle
 import pandas as pd
+
 
 
 
@@ -26,9 +27,18 @@ with open("./Scripts/pipeline_final.pkl", "rb") as f:
     model_pipeline = pickle.load(f)
 
 
+# 3- définiton du schéma des données d'entrée avec Pydantic
+
+"""
+Pydantic est une bibliothèque de validation de données utilisée par FastAPI pour définir et valider les schémas de données d'entrée et de sortie des endpoints.
+Ici, on définit un modèle de données d'entrée en utilisant une classe qui hérite de BaseModel.
+Chaque attribut de la classe correspond à une caractéristique attendue dans les données d'entrée
+"""
 
 
-# 3- définir l'API avec FastAPI
+
+
+# 4- définir l'API avec FastAPI
 
 app = FastAPI()
 
@@ -51,7 +61,7 @@ def read_root():
 # création d'un endpoint de prédiction
 @app.post("/predict")  # endpoint de prédiction : la fonction en dessous sera exécutée lorsqu'une requête POST est envoyée à /predict
 # on prend en entrée de la fonction, les données formatées en JSON (dictionnaire ou liste de dictionnaires)
-def predict(data: dict): 
+async def predict(request : Request): 
     """
     _Summary_ : fonction de prédiction qui reçoit les données en format JSON et retourne la prédiction et la probabilité de solvabilité associée.
     _Arguments_ :
@@ -59,13 +69,11 @@ def predict(data: dict):
     _Returns_ :
         dict : dictionnaire contenant la prédiction et la probabilité associée
     """
+    data = await request.json()  # récupère le JSON brut
     # 1- conversion du dictionnaire en DataFrame pandas pour pouvoir faire la prédiction
     # cas 1 : un seul individu = un dictionnaire
-    if isinstance(data):
-        input_data = pd.DataFrame([data])
     # cas 2 : plusieurs individus = liste de dictionnaires
-    elif isinstance(data, list):
-        input_data = pd.DataFrame(data)
+    input_data = pd.DataFrame (data if isinstance(data, list) else [data])
     
     # faire la prédiction avec le pipeline chargé
     prediction = model_pipeline.predict(input_data)
