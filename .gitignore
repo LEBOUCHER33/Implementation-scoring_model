@@ -6,6 +6,7 @@ env_p7_bis
 
 # ignorer les data_source
 DATA/
+application_train_final.csv
 
 
 
