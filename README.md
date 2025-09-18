@@ -33,8 +33,10 @@ L'objectif du projet sera triple :
 
 ## Partie 2 :
 
-- développer une API permettant de réaliser des tests unitaires et l'inférence du modèle
-- déployer l'API sur une solution cloud 
+- développer une API en local pour tester l'inference du modèle
+- réaliser des tests unitaires de l'API en local
+- déployer l'API sur une solution cloud / docker
+- réaliser des tests unitaires de l'API en production
 - gérer le versioning du code de l'API pour assurer son deploiement continu
 
 
@@ -56,5 +58,7 @@ L'objectif du projet sera triple :
 - Datadrift (evidently)
 
 - API
+
+- tests unitaires
 
 - outils MLOps
