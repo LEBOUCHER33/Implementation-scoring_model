@@ -33,8 +33,12 @@ L'objectif du projet sera triple :
 
 ## Partie 2 :
 
-- développer une API en local pour tester l'inference du modèle
-- réaliser des tests unitaires de l'API en local
+- développer une API en local pour tester l'inference du modèle, script python api.py
+- réaliser des tests unitaires de l'API en local, test_api.py
+- tester le fonctionnement de l'api et les requêtes https en local
+```bash
+uvicorn api:app --reload
+```
 - déployer l'API sur une solution cloud / docker
 - réaliser des tests unitaires de l'API en production
 - gérer le versioning du code de l'API pour assurer son deploiement continu
