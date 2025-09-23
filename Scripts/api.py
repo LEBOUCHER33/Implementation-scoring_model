@@ -20,6 +20,7 @@ from fastapi import FastAPI, Request
 import pickle
 import pandas as pd
 import shap
+import numpy as np
 
 
 
@@ -86,10 +87,13 @@ async def predict(request : Request):
     # 3- faire la prédiction avec le pipeline chargé
     prediction = model_pipeline.predict(input_data)
     prediction_proba = model_pipeline.predict_proba(input_data)[:,1]  # probabilité d'être un mauvais payeur (classe 1)
-
+    prediction_proba_seuil = (prediction_proba>=0.3).astype(int) # inclus la notion de stringence avec un seuil pour minimiser les FN
+    
     # 4- explainabilité avec SHAP
     data_transformed = model_pipeline.named_steps['preprocessor'].transform(input_data)  # on applique le préprocesseur aux données d'entrée
-    shap_values = explainer.shap_values(data_transformed)  # on calcule les valeurs SHAP
+    shap_expl = explainer(data_transformed)  # on calcule les valeurs SHAP
+    shap_values = shap_expl.values # on extrait seulement les valeurs numériques
+
 
     # on affiche les 5 features les plus importantes pour chaque individu
     explanations = []
@@ -98,14 +102,16 @@ async def predict(request : Request):
         top_5_features = sorted(features_shap.items(), key=lambda x: abs(x[1]), reverse=True)[:5]  # on trie les features par valeur absolue de SHAP et on prend les 5 premières
         explanations.append(top_5_features)
 
+    
     # retourner la prédiction et la probabilité associée
     return {
         "prediction": prediction.tolist(),
-        "probabilite de non-solvabilite": prediction_proba.tolist(),
-        "les 5 features les plus influentes sur le prediction sont ": explanations
+        "probabilite_1": prediction_proba.tolist(),
+        "prediction_seuil" : prediction_proba_seuil.tolist(),
+        "top_features": explanations
     }
 
-
+ 
 
 
 """

@@ -70,15 +70,15 @@ def test_endpoint_predict():
     # check si on a tous les outputs
     pred = response.json() 
     assert "prediction"  in pred
-    assert "probabilite de non-solvabilite" in pred
-    assert "les 5 features les plus influentes sur le prediction sont " in pred
+    assert "probabilite_1" in pred
+    assert "top_features" in pred
 
     # check les types des outputs
     assert isinstance(pred["prediction"], list)
-    assert isinstance(pred["probability"], list)
-    assert isinstance(pred["top5_shap"], list)
+    assert isinstance(pred["probabilite_1"], list)
+    assert isinstance(pred["top_features"], list)
 
     # check les valeurs des outputs
-    assert len(pred["top5_shap"][0]) == 5  # top 5 features
+    assert len(pred["top_features"][0]) == 5  # top 5 features
     assert pred["prediction"][0] in [0,1] # valeurs des probas 
-    assert 0<= pred["probabilite de non-solvabilite"][0] <=1 # valeurs des targets
+    assert 0<= pred["probabilite_1"][0] <=1 # valeurs des targets
