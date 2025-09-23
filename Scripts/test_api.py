@@ -16,7 +16,7 @@ from fastapi.testclient import TestClient
 # TestClient est une classe de FastAPI qui permet de simuler des requêtes HTTP pour tester les endpoints de l'API
 
 
-from Scripts.api import app  # on importe l'instance de l'API créée dans api.py
+from api import app  # on importe l'instance de l'API créée dans api.py
 
 
 

@@ -61,7 +61,7 @@ def read_root():
 # création d'un endpoint de prédiction
 @app.post("/predict")  # endpoint de prédiction : la fonction en dessous sera exécutée lorsqu'une requête POST est envoyée à /predict
 # on prend en entrée de la fonction, les données formatées en JSON (dictionnaire ou liste de dictionnaires)
-def predict(data): 
+async def predict(request : Request): 
     """
     _Summary_ : fonction de prédiction qui reçoit les données en format JSON et retourne 
         - la prédiction 
@@ -77,15 +77,17 @@ def predict(data):
             - la probabilité d'être classé "1", soit mauvais payeur
             - les 5 features les plus influentes sur le calcul
     """
-    # 1- conversion des données JSON en DataFrame pandas pour pouvoir faire la prédiction
+    # 1- récupération des données JSON de la requête
+    data = await request.json()
+    # 2- conversion des données JSON en DataFrame pandas pour pouvoir faire la prédiction
     # un seul individu = un dictionnaire / plusieurs individus = liste de dictionnaires
     input_data = pd.DataFrame (data if isinstance(data, list) else [data])
     
-    # 2- faire la prédiction avec le pipeline chargé
+    # 3- faire la prédiction avec le pipeline chargé
     prediction = model_pipeline.predict(input_data)
     prediction_proba = model_pipeline.predict_proba(input_data)[:,1]  # probabilité d'être un mauvais payeur (classe 1)
 
-    # 3- explainabilité avec SHAP
+    # 4- explainabilité avec SHAP
     data_transformed = model_pipeline.named_steps['preprocessor'].transform(input_data)  # on applique le préprocesseur aux données d'entrée
     shap_values = explainer.shap_values(data_transformed)  # on calcule les valeurs SHAP
 
