@@ -21,7 +21,7 @@ L'objectif du projet sera triple :
 3- Automatisation et intégration continue de cette interface API.
 
 
-## Partie 1 :
+### Partie 1 :
 
 - réaliser le data exploring et le feature engineering des données clients (notebook_1)
 - définir un scoring métier (notebook_2)
@@ -31,9 +31,9 @@ L'objectif du projet sera triple :
 - enregistrer le modèle (notebook_2) 
 
 
-## Partie 2 :
+### Partie 2 :
 
-### 2-1 création d'une API REST
+#### 2-1 création d'une API REST
 
 - développer une API pour tester l'inference du modèle (script python api.py)
 - réaliser des tests unitaires de l'API (test_api.py)
@@ -46,7 +46,7 @@ python -m uvicorn api:app --reload
 url = 'http://127.0.0.1.8000:/predict"
 ```
 
-### 2-2 déploiement de l'API
+#### 2-2 déploiement de l'API
 
 - créer une image docker à l'aide d'un Dockerfile à la base du repo git = instructions pour définir l'image docker :
     - environnement d'execution
@@ -92,7 +92,7 @@ url = 'https://api.onrender.com/predict'
 
 - Datadrift (evidently)
 
-- API REST (FastAPI)
+- API REST (FastAPI, uvicorn)
 
 - tests unitaires (TestClient)
 
