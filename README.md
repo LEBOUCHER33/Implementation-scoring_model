@@ -58,16 +58,16 @@ url = 'http://127.0.0.1.8000:/predict"
 ```bash
 docker build -t api_scoring:1.0 .
 ```
-    - lancer le conteneur 
+   - lancer le conteneur 
 ```bash
 docker run -p 8000:8000 --name api_scoring_container api_scoring:1.0
 ```
-    - tester le fonctionnement de l'application en local avec des requêtes http
+   - tester le fonctionnement de l'application en local avec des requêtes http
 ```python
 url = 'http://127.0.0.1.8000:/predict"
 ```
 - déployer l'API sur une solution cloud, Render (gère le build et le launch)
-- tester l'application avec des requêtes https 
+- tester l'application avec des requêtes https (protocole crypté des données, obligatoire sur un serveur exterieur)
 ```python
 url = 'https://api.onrender.com/predict'
 ```
