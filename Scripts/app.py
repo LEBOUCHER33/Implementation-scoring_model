@@ -50,7 +50,7 @@ if selected_indices:
 # 5- envoyer une requête https pour interroger l'api et renvoyer la prédiction
 
 if st.button("Get Predictions"):
-    data_json = df_processed.to_dict(orient="records")
+    data_json = {"features": df_processed.to_dict(orient="records")}
     url = "http://127.0.0.1:8000/predict"  # localhost
     url_cloud = "https://client-scoring-model.onrender.com/predict"
     response = requests.post(url_cloud, 
