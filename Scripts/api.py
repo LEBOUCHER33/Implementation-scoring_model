@@ -57,10 +57,10 @@ def read_root():
     """
     return {"message": "Welcome to the credit scoring API. Use the /predict endpoint to get predictions."}
 
-
+"""
 # définition d'une class BaseModel
 class InputData(BaseModel):
-    features: List[Dict[str, Any]]
+    features: List[Dict[str, Any]]"""
 
 
 # création d'un endpoint de prédiction
