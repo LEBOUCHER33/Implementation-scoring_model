@@ -57,16 +57,16 @@ def read_root():
     """
     return {"message": "Welcome to the credit scoring API. Use the /predict endpoint to get predictions."}
 
-"""
+
 # définition d'une class BaseModel
 class InputData(BaseModel):
-    features: List[Dict[str, Any]]"""
+    features: List[Dict[str, Any]]
 
 
 # création d'un endpoint de prédiction
 @app.post("/predict")  # endpoint de prédiction : la fonction en dessous sera exécutée lorsqu'une requête POST est envoyée à /predict
 # on prend en entrée de la fonction, les données formatées en JSON (dictionnaire ou liste de dictionnaires)
-async def predict(data : list): 
+async def predict(data : InputData): 
     """
     _Summary_ : fonction de prédiction qui reçoit les données en format JSON et retourne 
         - la prédiction 
