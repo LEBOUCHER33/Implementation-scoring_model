@@ -21,7 +21,8 @@ import pickle
 import pandas as pd
 import shap
 import numpy as np
-
+from pydantic import BaseModel
+from typing import List, Dict, Any
 
 
 
@@ -57,32 +58,47 @@ def read_root():
     return {"message": "Welcome to the credit scoring API. Use the /predict endpoint to get predictions."}
 
 
+# définition d'une class BaseModel
+class InputData(BaseModel):
+    features: List[Dict[str, Any]]
+
+
 
 
 # création d'un endpoint de prédiction
 @app.post("/predict")  # endpoint de prédiction : la fonction en dessous sera exécutée lorsqu'une requête POST est envoyée à /predict
 # on prend en entrée de la fonction, les données formatées en JSON (dictionnaire ou liste de dictionnaires)
-async def predict(request : Request): 
+async def predict(data : InputData): 
     """
     _Summary_ : fonction de prédiction qui reçoit les données en format JSON et retourne 
+
         - la prédiction 
+
         - la probabilité de solvabilité associée 
+
         - les 5 features les plus influences 
+
     _Arguments_ :
+
         data : (list or dict)
+
         - un dictionnaire si un seul individu
+
         - une liste de dictionnaire si plusieurs individus où chaque ligne = 1 dict
+
     _Returns_ :
         dict : dictionnaire contenant les outputs
+
             - la prédiction 
+
             - la probabilité d'être classé "1", soit mauvais payeur
+
             - les 5 features les plus influentes sur le calcul
     """
     # 1- récupération des données JSON de la requête
-    data = await request.json()
     # 2- conversion des données JSON en DataFrame pandas pour pouvoir faire la prédiction
     # un seul individu = un dictionnaire / plusieurs individus = liste de dictionnaires
-    input_data = pd.DataFrame (data if isinstance(data, list) else [data])
+    input_data = pd.DataFrame([data.features]) 
     
     # 3- faire la prédiction avec le pipeline chargé
     prediction = model_pipeline.predict(input_data)
