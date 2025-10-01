@@ -29,7 +29,7 @@ from typing import List, Dict, Any
 
 # 2- chargement du pipeline de prédiction
 
-with open("../Reports/pipeline_final.pkl", "rb") as f:
+with open("pipeline_final.pkl", "rb") as f:
     model_pipeline = pickle.load(f)
 
 
@@ -63,42 +63,35 @@ class InputData(BaseModel):
     features: List[Dict[str, Any]]
 
 
-
-
 # création d'un endpoint de prédiction
 @app.post("/predict")  # endpoint de prédiction : la fonction en dessous sera exécutée lorsqu'une requête POST est envoyée à /predict
 # on prend en entrée de la fonction, les données formatées en JSON (dictionnaire ou liste de dictionnaires)
-async def predict(data : InputData): 
+async def predict(data : list): 
     """
     _Summary_ : fonction de prédiction qui reçoit les données en format JSON et retourne 
-
         - la prédiction 
-
         - la probabilité de solvabilité associée 
-
         - les 5 features les plus influences 
-
     _Arguments_ :
-
         data : (list or dict)
-
         - un dictionnaire si un seul individu
-
         - une liste de dictionnaire si plusieurs individus où chaque ligne = 1 dict
-
     _Returns_ :
         dict : dictionnaire contenant les outputs
-
             - la prédiction 
-
             - la probabilité d'être classé "1", soit mauvais payeur
-
             - les 5 features les plus influentes sur le calcul
     """
-    # 1- récupération des données JSON de la requête
-    # 2- conversion des données JSON en DataFrame pandas pour pouvoir faire la prédiction
-    # un seul individu = un dictionnaire / plusieurs individus = liste de dictionnaires
-    input_data = pd.DataFrame([data.features]) 
+
+    # 1- récupération des données JSON de la requête et conversion en DataFrame pandas pour pouvoir faire la prédiction
+    
+    if isinstance(data, dict):
+            input_data = pd.DataFrame([data])  # un individu
+    elif isinstance(data, list):
+        input_data = pd.DataFrame(data)    # plusieurs individus
+    else:
+        return {"error": "Invalid input format"}
+    
     
     # 3- faire la prédiction avec le pipeline chargé
     prediction = model_pipeline.predict(input_data)
