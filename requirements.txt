@@ -5,25 +5,25 @@ numpy
 scikit_learn
 
 # outils de visualisation
-matplotlib
-seaborn
+#matplotlib
+#seaborn
 
 # outils de ML
 lightgbm
-xgboost
+#xgboost
 shap
-pickle
+#pickle
 
 # outil de gestion des déséquilibres de classe
-imbalanced_learn
+#imbalanced_learn
 
 # outil de gestion du data drift
-evidently
+#evidently
 
 # outils MLops
-mlflow
-pyngrok
-streamlit
+#mlflow
+#pyngrok
+#streamlit
 
 # outil de gestion de l'API
 fastapi
