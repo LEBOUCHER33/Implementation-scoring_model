@@ -122,10 +122,12 @@ async def predict(data : list[dict] | dict):
 
 """
 Pour tester en local l'API, lancer le server local :
+url = "http://127.0.0.1:8000/predict"
 ```bash
 uvicorn api:app --reload
+```
 
 lien url de l'api sur le cloud :
 https://client-scoring-model.onrender.com/predict
-```
+
 """
